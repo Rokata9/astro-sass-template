@@ -1,0 +1,67 @@
+@use "../abstracts/" as *;
+
+.container {
+  --padding: #{$container-min-margin-inline} * 2;
+  --max-width: #{$container-max-width};
+  width: min(100% - var(--padding), var(--max-width));
+  margin-inline: auto;
+}
+
+.container[data-type="narrow"] {
+  --max-width: #{$container-max-width-narrow};
+}
+.container[data-type="wide"] {
+  --max-width: #{$container-max-width-wide};
+}
+.container[data-type="full-bleed"] {
+  --max-width: 100%;
+}
+
+.flow > *:where(:not(:first-child)) {
+  margin-top: var(--flow-spacer, 1em);
+}
+
+.even-columns {
+  display: grid;
+  gap: var(--grid-gap, $grid-gap);
+
+  @include mq(medium) {
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+  }
+}
+
+.grid-auto-fit {
+  display: grid;
+  gap: var(--grid-gap, 1.5rem);
+  // min within minmax needed to handle situation where item is less than 250px and causes overflow of content
+  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+}
+
+.flex-group {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: var(--flex-column-gap, $flex-group-gap);
+  row-gap: var(--flex-row-gap, calc($flex-group-gap / 2));
+  width: fit-content;
+}
+
+.flex-group.mx-auto {
+  justify-content: center;
+}
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.pile {
+  display: grid;
+  grid-template-areas: "pile";
+  place-content: center;
+
+  > * {
+    grid-area: pile;
+  }
+}

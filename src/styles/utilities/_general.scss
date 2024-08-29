@@ -1,0 +1,64 @@
+@use '../abstracts/' as *;
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.lead {
+  font-size: fs(small, "500");
+  color: clr(neutral, "900");
+  text-transform: uppercase;
+  font-weight: $font-weight-bold;
+
+  & + p {
+    margin-top: 0;
+  }
+}
+
+.border-radius-1 {
+  border-radius: $border-radius-1;
+}
+
+.border-radius-2 {
+  border-radius: $border-radius-2;
+}
+
+.box-shadow-1 {
+  box-shadow: $box-shadow-1;
+}
+
+.box-shadow-2 {
+  box-shadow: $box-shadow-2;
+}
+
+.box-shadow-3 {
+  box-shadow: $box-shadow-3;
+}
+
+.box-shadow-4 {
+  box-shadow: $box-shadow-4;
+}
+
+.box-shadow-5 {
+  box-shadow: $box-shadow-5;
+}
+
+.round {
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+}
+
+// read more here: https://www.a11yproject.com/posts/how-to-hide-content/
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
